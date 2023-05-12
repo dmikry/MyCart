@@ -16,45 +16,36 @@ public class MyCartTests
 	}
 
 	[Test]
-	public void AddItem_ShouldIncreaseCartAmount()
+	public void AddItem() //increase cart amount
 	{
-		// Arrange
 		decimal initialAmount = cart.CartAmount;
 
-		// Act
 		cart.AddItem("Item A", 2, 15.0m);
 
-		// Assert
 		decimal updatedAmount = cart.CartAmount;
 		Assert.That(updatedAmount, Is.GreaterThan(initialAmount));
 	}
 
 	[Test]
-	public void RemoveItem_ShouldDecreaseCartAmount()
+	public void RemoveItem() //decrease cart amount
 	{
-		// Arrange
 		cart.AddItem("Item A", 2, 15.0m);
 		decimal initialAmount = cart.CartAmount;
 
-		// Act
 		cart.RemoveItem("Item A");
 
-		// Assert
 		decimal updatedAmount = cart.CartAmount;
 		Assert.That(updatedAmount, Is.LessThan(initialAmount));
 	}
 
 	[Test]
-	public void CartAmount_ShouldCalculateCorrectly()
+	public void CartAmountCalculation() //calculation of cart amount
 	{
-		// Arrange
 		cart.AddItem("Item A", 2, 15.0m);
 		cart.AddItem("Item B", 1, 10.0m);
 
-		// Act
 		decimal cartAmount = cart.CartAmount;
 
-		// Assert
 		decimal expectedAmount = 2 * 15.0m + 1 * 10.0m;
 		Assert.That(cartAmount, Is.EqualTo(expectedAmount));
 	}
